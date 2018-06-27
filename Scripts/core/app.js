@@ -2,7 +2,8 @@ let core;
 // core module - IIFE
 (function(core) {
   // App variables
-  //let myObject;
+  let Person;
+  
 
   /**
    * This function is used for Intialization
@@ -13,59 +14,21 @@ let core;
       "font-weight: bold; font-size: 20px;"
     );
 
-    //myObject = {}; // object literal notation
-    //myObject = new Object(); // constructor notation
+    // constructor notation to declare an object
+    Person = function (name, age){
+      this._name = name;
+      this._age = age;
+    };
 
-    //myObject = Object.create(null);
-
-    /* 
-    // property definition
-    myObject.name = "";
-    myObject.age = 0;
-    */
-
-    /*
-    // private properties
-    Object.defineProperty(myObject, "_name", {
-      configurable: false,
-      enumerable: false,
-      value: "",
-      writable: true
-    });
-
-    Object.defineProperty(myObject, "_age", {
-      configurable: false,
-      enumerable: false,
-      value: 0,
-      writable: true
-    });
-
-    // public properties
-    Object.defineProperty(myObject, "name", {
-      configurable: false,
-      enumerable: false,
-      get: function() {
-        return this._name;
-      },
-      set: function(newValue) {
-        this._name = newValue;
-      }
-    });
-
-    Object.defineProperty(myObject, "age", {
-      configurable: false,
-      enumerable: false,
-      get: function() {
-        return this._age;
-      },
-      set: function(newValue) {
-        this._age = newValue;
-      }
-    });
-    */
+    // method declaration and definition
+    Person.prototype.SaysHello = function(){
+      console.log(`${this._name} says hello!`);
+    }
 
     Main();
   }
+
+  
 
   /**
    * This function is the where the main functionality for our
@@ -74,13 +37,15 @@ let core;
   function Main() {
     console.log(`%c App Started...`, "font-weight: bold; font-size: 20px;");
 
-    /*
-    myObject.name = "Tom";
-    myObject.age = 49;
+    // instantiation - object creation
+    let person = new Person("Tom", 49);
 
-    console.log(myObject);
-    */
+    person.SaysHello();
+    
+    console.log(person);
   }
 
+
   window.addEventListener("load", Start);
+
 })(core | (core = {}));
